@@ -1,0 +1,27 @@
+plugins {
+    id "application"
+}
+
+ext {
+    javaMainClass = "com.eugene.percent.StoreDemo"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+apply plugin : "java"
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+}
